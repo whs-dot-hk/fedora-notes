@@ -1,0 +1,12 @@
+- name: Installer
+  hosts: all
+  tasks:
+  - become: "yes"
+    name: Install hugo
+    unarchive:
+      creates: /usr/local/bin/hugo
+      dest: /usr/local/bin
+      extra_opts:
+        - hugo
+      remote_src: "yes"
+      src: "{{ hugo_url }}"
